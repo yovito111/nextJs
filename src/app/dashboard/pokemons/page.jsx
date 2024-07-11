@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PokemonGrid from "../../pokemons/components/PokemonGrid";
+import PokemonGrid from "../../../pokemons/components/PokemonGrid";
 
 const getPokemons = async( limit = 20, offset = 0) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
@@ -11,6 +11,7 @@ const getPokemons = async( limit = 20, offset = 0) => {
       name : pokemon.name,
     }))
 
+    //throw new Error('Ésto es un error que no debería de suceder');
     return data
 }
 
@@ -22,8 +23,7 @@ export default async function PokemonsPage() {
 
       <span className="text-5xl my-2">Listado de Pokémones <small>estático</small></span>
 
-      <PokemonGrid pokemons={pokemons} />
-      
+      <PokemonGrid pokemons={pokemons}/>      
     </div>
   );
 }

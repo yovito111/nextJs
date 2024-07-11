@@ -6,6 +6,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'wallpapercave.com'
             },
+            {
+                protocol: 'https',
+                hostname: 'raw.githubusercontent.com'
+            }
         ]
     }
 };
