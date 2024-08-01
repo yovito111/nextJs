@@ -14,7 +14,7 @@ export async function generateMetadata(props) {
 
   try {
 
-    const { id, name } = await getPokemon(props.params.id);
+    const { id, name } = await getPokemon(props.params.name);
 
     return {
       title: `#${id} - ${name}`,
@@ -32,10 +32,10 @@ export async function generateMetadata(props) {
 }
 
 
-const getPokemon = async (id) => {
+const getPokemon = async (name) => {
   try {
 
-    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
       next: {
         revalidate: 60 * 60 * 30 * 6
       }
@@ -51,7 +51,7 @@ const getPokemon = async (id) => {
 
 export default async function PokemonPage(props) {
 
-  const pokemon = await getPokemon(props.params.id);
+  const pokemon = await getPokemon(props.params.name);
 
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
