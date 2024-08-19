@@ -3,11 +3,15 @@ import { notFound } from "next/navigation";
 
 //! Se genera en Build time. 
 export async function generateStaticParams() {
-  const static151Pokemons = Array.from({ length: 151 }).map((v, i) => `${i + 1}`);
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+  .then(resp => resp.json());
 
-  return static151Pokemons.map( id => ({
-    id: id
+  // Se maneja el la respuesta de la API
+  const static151Pokemons = response.results.map( pokemon => ({
+    name : pokemon.name,
   }))
+
+  return static151Pokemons;
 }
 
 export async function generateMetadata(props) {

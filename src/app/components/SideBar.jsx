@@ -4,6 +4,8 @@ import { FaReact } from "react-icons/fa";
 import { IoCalculator, IoSearch } from "react-icons/io5";
 import {SideBarMenuItems} from './SideBarMenuItem'
 import { GiAnimalSkull } from "react-icons/gi";
+import { GrFavorite } from "react-icons/gr";
+
 
 const menuItems = [
     {
@@ -23,6 +25,12 @@ const menuItems = [
         icon: <GiAnimalSkull size={30}/>,
         title: 'Pokemons',
         subTitle: 'Pokemons list'
+    },
+    {
+        path: '/dashboard/favorites',
+        icon: <GrFavorite   size={30}/>,
+        title: 'favorites',
+        subTitle: 'favorites list'
     },
 ] 
 
