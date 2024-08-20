@@ -1,6 +1,12 @@
 import Image from "next/image";
 import PokemonGrid from "../../../pokemons/components/PokemonGrid";
 
+export const metadata = {
+  title: 'Pokemon List',
+  description: 'Sección de Pokemones'
+}
+
+
 const getPokemons = async( limit = 20, offset = 0) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
     .then(resp => resp.json());
