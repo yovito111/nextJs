@@ -1,11 +1,16 @@
 'use client';
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../../store/counter/counterSlice';
 
-export const CartCounter = ({  value = 0 }) => {
+export const CartCounter = () => {
 
-  const [count, setCount] = useState(value);
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
+  // const [count, setCount] = useState(value);
 
   return (
     <>
@@ -13,13 +18,15 @@ export const CartCounter = ({  value = 0 }) => {
 
       <div className="flex">
         <button
-          onClick={() => setCount(count + 1)}
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
           className="flex items-center justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transition-all w-[100px] mr-2">
           +1
         </button>
 
         <button
-          onClick={() => setCount(count - 1)}
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
           className="flex items-center justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transition-all w-[100px] mr-2">
           -1
         </button>
